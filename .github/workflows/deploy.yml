@@ -28,7 +28,7 @@ jobs:
           cache: "npm"
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run SonarCloud Scan
         env:
@@ -40,11 +40,12 @@ jobs:
             -Dsonar.organization=my-org \
             -Dsonar.sources=. \
             -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=$SONAR_TOKEN
+            -Dsonar.branch.name=${{ github.ref_name }} \
+            -Dsonar.token=$SONAR_TOKEN
 
   build:
     name: Build Next.js App
-    needs: sonar  # Runs only if Sonar Check passes
+    needs: sonar
     runs-on: ubuntu-latest
 
     steps:
@@ -58,14 +59,14 @@ jobs:
           cache: "npm"
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build Next.js Project
         run: npm run build
 
   test:
     name: Run Tests
-    needs: build  # Runs only if Build passes
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -79,7 +80,7 @@ jobs:
           cache: "npm"
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run Linting
         run: npm run lint
@@ -89,7 +90,7 @@ jobs:
 
   deploy-dev:
     name: Deploy to Development
-    needs: test  # Runs only if Tests pass
+    needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/develop'
 
@@ -100,12 +101,15 @@ jobs:
       - name: Install Vercel CLI
         run: npm install -g vercel
 
+      - name: Link Vercel Project
+        run: vercel link --token=${{ secrets.VERCEL_TOKEN }}
+
       - name: Deploy to Development
         run: vercel --token=${{ secrets.VERCEL_TOKEN }}
 
   deploy-staging:
     name: Deploy to Staging
-    needs: test  # Runs only if Tests pass
+    needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/staging'
 
@@ -116,12 +120,15 @@ jobs:
       - name: Install Vercel CLI
         run: npm install -g vercel
 
+      - name: Link Vercel Project
+        run: vercel link --token=${{ secrets.VERCEL_TOKEN }}
+
       - name: Deploy to Staging
         run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
 
   deploy-prod:
     name: Deploy to Production
-    needs: test  # Runs only if Tests pass
+    needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
 
@@ -131,6 +138,9 @@ jobs:
 
       - name: Install Vercel CLI
         run: npm install -g vercel
+
+      - name: Link Vercel Project
+        run: vercel link --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Production
         run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
