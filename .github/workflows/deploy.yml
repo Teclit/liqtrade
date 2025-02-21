@@ -37,11 +37,11 @@ jobs:
           npm install -g sonarqube-scanner
           sonar-scanner \
             -Dsonar.projectKey=Teclit_liqtrade \
-            -Dsonar.organization=teclit-org \  # <-- Replace with the correct organization
-            -Dsonar.sources=. \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.branch.name=${{ github.ref_name }} \
-            -Dsonar.token=$SONAR_TOKEN
+            -Dsonar.organization=teclit-org \
+            -Dsonar.sources="." \
+            -Dsonar.host.url="https://sonarcloud.io" \
+            -Dsonar.branch.name="${{ github.ref_name }}" \
+            -Dsonar.token="${{ secrets.SONAR_TOKEN }}"
 
   build:
     name: Build Next.js App
