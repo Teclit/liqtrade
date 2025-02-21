@@ -37,7 +37,7 @@ jobs:
           npm install -g sonarqube-scanner
           sonar-scanner \
             -Dsonar.projectKey=Teclit_liqtrade \
-            -Dsonar.organization=my-org \
+            -Dsonar.organization=teclit-org \  # <-- Replace with the correct organization
             -Dsonar.sources=. \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.branch.name=${{ github.ref_name }} \
