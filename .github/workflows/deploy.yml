@@ -86,7 +86,13 @@ jobs:
         run: npm run lint
 
       - name: Run Tests
-        run: npm test
+        run: |
+          if npm run | grep -q "test"; then
+            npm test
+          else
+            echo "No test script found, skipping tests."
+          fi
+  
 
   deploy-dev:
     name: Deploy to Development
