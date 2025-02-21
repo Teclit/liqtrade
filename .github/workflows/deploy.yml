@@ -1,0 +1,102 @@
+name: LiqTrade Deploy to Vercel
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+  test:
+    name: Run Code Quality Checks & Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm" # Cache node_modules for faster builds
+
+      # Install project dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Run ESLint to enforce code quality
+      - name: Run Linting
+        run: npm run lint
+
+      # Run unit tests to catch issues early
+      - name: Run Tests
+        run: npm test
+
+  build:
+    name: Build & Optimize Project
+    needs: test  # Only run if the test job succeeds
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm install
+
+      # Build the Next.js application
+      - name: Build Next.js App
+        run: npm run build
+
+      # Run TypeScript type checks (optional but recommended)
+      - name: TypeScript Type Checking
+        run: npm run type-check
+
+      # Verify the application can start
+      - name: Test Application Start
+        run: npm start & sleep 5 && curl -I http://localhost:3000 || exit 1
+
+  deploy:
+    name: Deploy to Vercel (Production)
+    needs: build  # Only run if the build job succeeds
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'  # Deploy only from master branch
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      # Deploy to Vercel using a secure token
+      - name: Deploy to Vercel
+        run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+  preview-deploy:
+    name: Deploy to Vercel (Preview)
+    needs: build  # Only run if the build job succeeds
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'  # Deploy preview only from develop
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      # Deploy preview version for the develop branch
+      - name: Deploy to Vercel (Preview)
+        run: vercel --token=${{ secrets.VERCEL_TOKEN }}
