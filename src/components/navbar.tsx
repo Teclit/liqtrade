@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import {Button} from "@/components/ui/button";
+import {usePathname} from "next/navigation";
+import {useState} from "react";
 import {CiMenuBurger} from "react-icons/ci";
 import {TfiClose} from "react-icons/tfi";
 
@@ -14,18 +14,18 @@ export function Navbar() {
 
     // Define left and right route groups
     const leftRoutes = [
-        { name: "Prêt", path: "/pret" },
-        { name: "Affacturage", path: "/affacturage" },
+        {name: "Prêt", path: "/pret"},
+        {name: "Affacturage", path: "/affacturage"},
     ];
 
     const rightRoutes = [
-        { name: "Simulateur", path: "/simulateur" },
-        { name: "Contact", path: "/contact" },
-        { name: "Publications", path: "/publications" },
+        {name: "Simulateur", path: "/simulateur"},
+        {name: "Contact", path: "/contact"},
+        {name: "Publications", path: "/publications"},
     ];
 
     return (
-        <nav style={{ backgroundColor: "var(--whitebackground)" }}>
+        <nav style={{backgroundColor: "var(--whitebackground)"}}>
             <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo et liens à gauche */}
@@ -36,6 +36,7 @@ export function Navbar() {
                                 alt="LIQTRADE"
                                 width={150}
                                 height={100}
+                                priority
                             />
                         </Link>
                         <div className="hidden md:flex items-center space-x-8">
@@ -69,22 +70,26 @@ export function Navbar() {
                             ))}
                         </div>
                         <div className="flex items-center space-x-4">
-                            <Button
-                                className="hidden md:inline-flex px-4 py-2 rounded-lg transform transition hover:scale-105 "
-                                style={{
-                                    backgroundColor: 'var(--whitebackground)',
-                                    color: 'var(--greencolor)',
-                                    border: '1px solid var(--greencolor)'
-                                }}
-                            >
-                                S&apos;inscrire
-                            </Button>
-                            <Button
-                                className="px-4 py-2 rounded-md transform transition hover:scale-105 "
-                                style={{ color: 'var(--whitebackground)', backgroundColor: 'var(--greencolor)' }}
-                            >
-                                Se connecter
-                            </Button>
+                            <Link href="/register">
+                                <Button
+                                    className="hidden md:inline-flex px-4 py-2 rounded-lg transform transition hover:scale-105 "
+                                    style={{
+                                        backgroundColor: 'var(--whitebackground)',
+                                        color: 'var(--greencolor)',
+                                        border: '1px solid var(--greencolor)'
+                                    }}
+                                >
+                                    S'inscrire
+                                </Button>
+                            </Link>
+                            <Link href="/login">
+                                <Button
+                                    className="px-4 py-2 rounded-md transform transition hover:scale-105 "
+                                    style={{color: 'var(--whitebackground)', backgroundColor: 'var(--greencolor)'}}
+                                >
+                                    Se connecter
+                                </Button>
+                            </Link>
                         </div>
                     </div>
 
@@ -96,10 +101,10 @@ export function Navbar() {
                         >
                             {mobileMenuOpen ? (
                                 // Icône de fermeture avec taille et couleur personnalisées
-                                <TfiClose size={24} color="var(--darkcolor)" />
+                                <TfiClose size={24} color="var(--darkcolor)"/>
                             ) : (
                                 // Icône hamburger avec taille et couleur personnalisées
-                                <CiMenuBurger size={24} color="var(--darkcolor)" />
+                                <CiMenuBurger size={24} color="var(--darkcolor)"/>
                             )}
 
                         </button>
@@ -127,22 +132,29 @@ export function Navbar() {
 
                         {/* Mobile Buttons */}
                         <div className="flex flex-col space-y-2">
-                            <Button
-                                className="w-full px-4 py-2 rounded-lg"
-                                style={{
-                                    backgroundColor: 'var(--whitebackground)',
-                                    color: 'var(--greencolor)',
-                                    border: '1px solid var(--greencolor)'
-                                }}
-                            >
-                                S'inscrire
-                            </Button>
-                            <Button
-                                className="w-full px-4 py-2 rounded-md"
-                                style={{ color: 'var(--whitebackground)', backgroundColor: 'var(--greencolor)' }}
-                            >
-                                Se connecter
-                            </Button>
+                            <Link href="/register">
+                                <Button
+                                    className="w-full px-4 py-2 rounded-lg"
+                                    style={{
+                                        backgroundColor: 'var(--whitebackground)',
+                                        color: 'var(--greencolor)',
+                                        border: '1px solid var(--greencolor)'
+                                    }}
+                                >
+                                    S'inscrire
+                                </Button>
+                            </Link>
+
+                            <Link href="/login">
+                                <Button
+                                    className="w-full px-4 py-2 rounded-md"
+                                    style={{color: 'var(--whitebackground)', backgroundColor: 'var(--greencolor)'}}
+                                >
+                                    Se connecter
+                                </Button>
+                            </Link>
+
+
                         </div>
                     </div>
                 </div>

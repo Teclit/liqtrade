@@ -69,6 +69,7 @@ export default function Home() {
                         alt="Image d'accueil"
                         width={900}
                         height={500}
+                        priority
                         className="object-cover rounded-lg"/>
                 </div>
             </div>
