@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
+import {FaLongArrowAltRight} from "react-icons/fa";
 
 export default function Home() {
     return (
@@ -46,20 +47,8 @@ export default function Home() {
                                     borderBottom: "2px solid var(--greencolor)",
                                 }}
                             >
-                                S&apos;inscrire
-                                <svg
-                                    className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                >
-                                    <path d="M3 12h18" />
-                                    <path d="m12 5 9 7-9 7" />
-                                </svg>
+                                S'inscrire
+                                < FaLongArrowAltRight className={"ml-2"}/>
                             </Link>
                         </Button>
                     </div>

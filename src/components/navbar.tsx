@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import {CiMenuBurger} from "react-icons/ci";
+import {TfiClose} from "react-icons/tfi";
 
 export function Navbar() {
     const pathname = usePathname();
@@ -24,7 +26,7 @@ export function Navbar() {
 
     return (
         <nav  style={{ backgroundColor: 'var(--whitebackground)' }}>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     {/* Left side: Logo and left routes (for md and up) */}
                     <div className="flex items-center space-x-8">
@@ -93,16 +95,13 @@ export function Navbar() {
                             className="text-gray-600 hover:text-gray-900 focus:outline-none"
                         >
                             {mobileMenuOpen ? (
-                                // Close icon
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                </svg>
+                                // Icône de fermeture avec taille et couleur personnalisées
+                                <TfiClose size={24} color="var(--darkcolor)" />
                             ) : (
-                                // Hamburger icon
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                                </svg>
+                                // Icône hamburger avec taille et couleur personnalisées
+                                <CiMenuBurger size={24} color="var(--darkcolor)" />
                             )}
+
                         </button>
                     </div>
                 </div>
@@ -136,7 +135,7 @@ export function Navbar() {
                                     border: '1px solid var(--greencolor)'
                                 }}
                             >
-                                S&apos;inscrire
+                                S'inscrire
                             </Button>
                             <Button
                                 className="w-full px-4 py-2 rounded-md"
