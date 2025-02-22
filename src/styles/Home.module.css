@@ -1,4 +1,14 @@
-/* Home.module.css */
+/* === Variables globales pour les couleurs === */
+
+
+/* === Styles généraux === */
+.HomePage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Conteneur principal */
 .container {
     background-color: var(--whitebackground);
     min-height: calc(100vh - 4rem);
@@ -8,13 +18,16 @@
     flex-direction: row;
     align-items: stretch;
 }
+
 .container h3 {
     color: var(--bluecolor);
 }
+
 .container p {
     color: var(--darkcolor);
 }
 
+/* Colonne de gauche : Texte et actions */
 .leftColumn {
     flex-basis: 40%;
     display: flex;
@@ -25,14 +38,87 @@
     padding: 1rem;
 }
 
+/* Colonne de droite : Image */
 .rightColumn {
     flex: 1;
     position: relative;
 }
 
-/* Responsive adjustments */
+/* Section description */
+.sectionDescription {
+    background-color: var(--lightbgcolor);
+    display: flex;
+    justify-content: space-between;
+    padding: 3.5rem 9rem;
+    margin-top: 8rem;
+}
 
-/* For large computers (min-width: 1440px) */
+/* Liste dans la section description */
+.sectionDescription ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1.125rem; /* 18px */
+    font-weight: 600;
+    margin-left: 9rem;
+}
+
+/* Boutons */
+.greenBackground {
+    background-color: var(--greencolor);
+}
+
+.whiteText {
+    color: var(--whitebackground);
+}
+
+.whiteBackground {
+    background-color: var(--whitebackground);
+}
+
+.greenText {
+    color: var(--greencolor);
+}
+
+.greenBorder {
+    border: 1px solid var(--greencolor);
+}
+
+.transparentBorder {
+    border: none;
+    border-bottom: 2px solid var(--greencolor);
+}
+
+.hoverGreen {
+    transition: all 0.3s;
+    transform: scale(1.05);
+}
+
+/* Boutons noirs */
+.blackBackground {
+    background-color: var(--blackcolor);
+    color: var(--whitebackground);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.375rem; /* 6px */
+}
+
+.blackBackground:hover {
+    background-color: #111111; /* Noir légèrement plus clair */
+}
+
+/* Texte conditionnel dans les boutons */
+.activeText {
+    color: var(--greencolor);
+    font-weight: bold;
+}
+
+.inactiveText {
+    color: var(--graycolor);
+}
+
+/* === Ajustements réactifs === */
+
+/* Pour grands écrans */
 @media (min-width: 1440px) {
     .rightColumn {
         height: 700px;
@@ -48,6 +134,7 @@
     }
 }
 
+/* Petits écrans (mobile) */
 @media (max-width: 767px) {
     .container {
         padding: 100px 0;
@@ -65,14 +152,14 @@
     }
 }
 
-/* For tablets (min-width: 768px and max-width: 1023px) */
+/* Pour tablettes (entre 768px et 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
     .rightColumn {
         height: 400px;
     }
 }
 
-/* Center leftColumn content for tablets and mobile */
+/* Centrer le contenu de la gauche pour mobiles et tablettes */
 @media (max-width: 1023px) {
     .leftColumn {
         align-items: center;
@@ -80,11 +167,9 @@
     }
 }
 
-/* For laptops (min-width: 1024px and max-width: 1439px) */
+/* Pour ordinateurs portables (entre 1024px et 1439px) */
 @media (min-width: 1024px) and (max-width: 1439px) {
     .rightColumn {
         height: 600px;
     }
 }
-
-

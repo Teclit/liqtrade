@@ -25,10 +25,10 @@ export function Navbar() {
     ];
 
     return (
-        <nav  style={{ backgroundColor: 'var(--whitebackground)' }}>
+        <nav style={{ backgroundColor: "var(--whitebackground)" }}>
             <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
-                    {/* Left side: Logo and left routes (for md and up) */}
+                    {/* Logo et liens à gauche */}
                     <div className="flex items-center space-x-8">
                         <Link href="/" className="flex items-center mr-7">
                             <Image
