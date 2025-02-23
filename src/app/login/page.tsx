@@ -1,21 +1,33 @@
 "use client";
 
-import {useState} from "react";
+import { useState } from "react";
 import Link from "next/link";
-import {Button} from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 export default function LoginPage() {
-    const [formData, setFormData] = useState({email: "", password: ""});
+    const [formData, setFormData] = useState({ email: "", password: "" });
+    const router = useRouter(); // Utilisé pour rediriger vers /user
 
-    const handleChange = (e: { target: { name: any; value: any; }; }) => {
-        const {name, value} = e.target;
-        setFormData({...formData, [name]: value});
+    const handleChange = (e: { target: { name: string; value: string } }) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
+    const handleSubmit = (e: { preventDefault: () => void }) => {
         e.preventDefault();
-        // Handle form submission logic here
+
+
         console.log("Login form submitted", formData);
+
+       // Fake token
+        const token = "fake-jwt-token";
+
+        // Set token in localStorage with expiration of 2 hours
+        const expirationTime = new Date().getTime() + 2 * 60 * 60 * 1000; // 2 heures
+        localStorage.setItem("authToken", JSON.stringify({ token, expiresAt: expirationTime }));
+
+        router.push("/user");
     };
 
     return (
@@ -44,11 +56,15 @@ export default function LoginPage() {
                         required
                     />
                 </div>
-                <Button type="submit" className="w-full" style={{
-                    color: 'var(--whitebackground)',
-                    backgroundColor: 'var(--greencolor)',
-                    border: '1px solid var(--greencolor)'
-                }}>
+                <Button
+                    type="submit"
+                    className="w-full"
+                    style={{
+                        color: "var(--whitebackground)",
+                        backgroundColor: "var(--greencolor)",
+                        border: "1px solid var(--greencolor)",
+                    }}
+                >
                     se connecter
                 </Button>
             </form>
