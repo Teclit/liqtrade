@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function Sidebar() {
     return (
-        <div className="w-100 bg-white shadow-md p-6 min-h-screen">
+        <div className="w-72 bg-white shadow-md p-6 min-h-screen">
             <h2 className="text-xl font-bold text-blue-700">LIQTRADE</h2>
 
             <nav className="mt-6 space-y-5">
