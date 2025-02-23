@@ -16,6 +16,7 @@ export function Navbar() {
     const leftRoutes = [
         {name: "Prêt", path: "/pret"},
         {name: "Affacturage", path: "/affacturage"},
+        {name: "User", path: "/user"},
     ];
 
     const rightRoutes = [

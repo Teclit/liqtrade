@@ -33,7 +33,7 @@ export default function Home() {
                     <div className="flex flex-wrap gap-4 justify-end">
                         <Button size="lg" asChild>
                             <Link
-                                href="/contact"
+                                href="/login"
                                 className="transform transition hover:scale-105"
                                 style={{
                                     color: "var(--whitebackground)",
@@ -46,7 +46,7 @@ export default function Home() {
                         </Button>
                         <Button variant="outline" size="lg" asChild className="group">
                             <Link
-                                href="/simulateur"
+                                href="/register"
                                 className="flex items-center transform transition hover:scale-105"
                                 style={{
                                     backgroundColor: "var(--whitebackground)",
