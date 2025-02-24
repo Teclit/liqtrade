@@ -4,10 +4,9 @@ import React, {useEffect, useState} from "react";
 import {chartData, financialData} from "../../data";
 
 export default function FinancialInfo() {
-    const [data, setData] = useState(chartData); // Initialize with default data
-
+    const [data, setData] = useState(chartData);
     useEffect(() => {
-        // Simulate fetching data (In real case, replace with API fetch)
+        // Simulate fetching data
         setTimeout(() => {
             setData(chartData);
         }, 1000);
