@@ -69,7 +69,7 @@ export default function UserCard() {
 
                     <div className="self-end text-right">
                         <Image
-                            src="/joseph.jpg"
+                            src="/coin.png"
                             alt="User profile"
                             width={40}
                             height={40}
