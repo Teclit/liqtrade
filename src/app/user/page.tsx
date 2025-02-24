@@ -1,13 +1,18 @@
 "use client";
 import Sidebar from "@/components/Sidebar";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import {useContext} from "react";
+import {AuthContext} from "@/context/AuthProvider";
 
 export default function UserDashboard() {
+    const { logout } = useContext(AuthContext);
     return (
-        <div className="flex h-auto bg-gray-100">
-            {/* Sidebar */}
-            <Sidebar/>
+        <ProtectedRoute>
+            <div className="flex h-auto bg-gray-100">
+                {/* Sidebar */}
+                <Sidebar/>
 
-            {/* Main Content
+                {/* Main Content
             <div className="flex-1 p-6">
                 <header className="flex justify-between items-center">
                     <h1 className="text-3xl font-bold">Bonjour Paul !</h1>
@@ -24,7 +29,7 @@ export default function UserDashboard() {
             */}
 
 
-            {/*
+                {/*
                 <UserCard />
                 <FinancialChart />
                 <Transactions />
@@ -32,6 +37,11 @@ export default function UserDashboard() {
 
             </div>
              */}
-        </div>
+            </div>
+            <p>Voici votre tableau de bord.</p>
+            <button onClick={logout} className="mt-4 bg-red-500 text-white px-4 py-2 rounded">
+                Déconnexion
+            </button>
+        </ProtectedRoute>
     );
 }

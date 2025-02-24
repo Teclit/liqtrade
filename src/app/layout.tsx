@@ -1,26 +1,31 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { Navbar } from '@/components/navbar';
-import React from "react";
+import "./globals.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { cookies } from "next/headers"; // Fetch localStorage equivalent on server
+import AuthProvider from "@/context/AuthProvider";
+import { Navbar } from "@/components/navbar";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: 'LiqTrade - Financial Solutions',
-    description: 'Professional financial services platform',
+    title: "LiqTrade - Financial Solutions",
+    description: "Professional financial services platform",
 };
 
-export default function RootLayout({
-                                       children,
-                                   }: {
-    children: React.ReactNode;
-}) {
+// Make the function `async` to await `cookies()`
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+    const cookieStore = await cookies(); // ✅ Await the cookies() function
+    const authToken = cookieStore.get("authToken")?.value || null; // ✅ Access cookies safely
+    const isAuthenticated = !!authToken; // ✅ Check if token exists
+
     return (
         <html lang="fr">
         <body className={inter.className}>
-        <Navbar />
-        <main>{children}</main>
+        <AuthProvider>
+            {/* Show Navbar only if user is NOT authenticated */}
+            {!isAuthenticated && <Navbar />}
+            <main>{children}</main>
+        </AuthProvider>
         </body>
         </html>
     );
