@@ -1,12 +1,34 @@
+"use client";
+
+import {useState} from "react";
+import TransactionTabs from "./TransactionTabs";
+import LoanStatus from "./LoanStatus";
+import LoanSummary from "./LoanSummary";
+import PendingValidation from "./PendingValidation";
+import ClosedLoan from "./ClosedLoan";
+import ContractDetailsTable from "@/components/ContractDetailsTable";
+import {contractDetails, loanConditions} from "../../transactionData";
+import LoanConditionsTable from "@/components/LoanConditionsTable";
+
 export default function Transactions() {
+    const [activeTab, setActiveTab] = useState<string>("Actifs");
+
     return (
-        <div className="mt-6 bg-white p-6 shadow rounded-md">
-            <h3 className="font-semibold">Transactions</h3>
-            <div className="flex gap-4 mt-4">
-                <button className="px-6 py-2 bg-green-200 rounded-md">Actifs</button>
-                <button className="px-6 py-2 bg-yellow-200 rounded-md">En attente (1)</button>
-                <button className="px-6 py-2 bg-gray-200 rounded-md">Clos</button>
-            </div>
+        <div className="  p-6 bg-gray-100 rounded-lg">
+            <h2 className="text-xl gap-2 font-bold">Transactions</h2>
+
+            <TransactionTabs setActiveTabAction={setActiveTab} />
+
+            {activeTab === "Actifs" && (
+                <div className="flex flex-wrap gap-6 mt-6">
+                    <LoanStatus />
+                    <LoanSummary />
+                    <PendingValidation />
+                    <ClosedLoan />
+                    <ContractDetailsTable data={contractDetails} />
+                    <LoanConditionsTable data={loanConditions} />
+                </div>
+            )}
         </div>
     );
 }
