@@ -10,7 +10,7 @@ export default function UserDashboard() {
         <ProtectedRoute>
             <div className="flex h-auto bg-gray-100">
                 {/* Sidebar */}
-                <Sidebar/>
+                <Sidebar logoutAction={logout} />
 
                 {/* Main Content
             <div className="flex-1 p-6">
@@ -38,10 +38,6 @@ export default function UserDashboard() {
             </div>
              */}
             </div>
-            <p>Voici votre tableau de bord.</p>
-            <button onClick={logout} className="mt-4 bg-red-500 text-white px-4 py-2 rounded">
-                Déconnexion
-            </button>
         </ProtectedRoute>
     );
 }

@@ -8,10 +8,11 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
     const [authenticated, setAuthenticated] = useState(false);
 
     useEffect(() => {
-        // Check for authToken in cookies
-        const token = document.cookie.split("; ").find(row => row.startsWith("authToken="));
+        const authData = JSON.parse(localStorage.getItem("authData") || "{}");
+        const now = new Date().getTime();
 
-        if (!token) {
+        if (!authData?.token || now >= authData.expiresAt) {
+            localStorage.removeItem("authData"); // Remove expired session
             router.push("/auth/login");
         } else {
             setAuthenticated(true);

@@ -23,7 +23,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <body className={inter.className}>
         <AuthProvider>
             {/* Show Navbar only if user is NOT authenticated */}
-            {!isAuthenticated && <Navbar />}
             <main>{children}</main>
         </AuthProvider>
         </body>
