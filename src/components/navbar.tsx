@@ -134,7 +134,7 @@ export function Navbar() {
 
                         {/* Mobile Buttons */}
                         <div className="flex flex-col space-y-2">
-                            <Link href="/register">
+                            <Link href="/auth/register">
                                 <Button
                                     className="w-full px-4 py-2 rounded-lg"
                                     style={{
@@ -147,7 +147,7 @@ export function Navbar() {
                                 </Button>
                             </Link>
 
-                            <Link href="/login">
+                            <Link href="/auth/login">
                                 <Button
                                     className="w-full px-4 py-2 rounded-md"
                                     style={{color: 'var(--whitebackground)', backgroundColor: 'var(--greencolor)'}}
