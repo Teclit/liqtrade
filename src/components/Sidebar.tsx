@@ -60,7 +60,7 @@ export default function Sidebar({ logoutAction }: SidebarProps) {
     };
 
     return (
-        <div className="w-72 bg-white shadow-md p-6 h-auto">
+        <div className="w-72 bg-white shadow-md p-6 h-fit">
             <Link href="/" className="flex items-center ">
                 <Image
                     src="/liqtrade-logo.png"

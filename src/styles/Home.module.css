@@ -63,21 +63,43 @@
     margin-left: 9rem;
 }
 
-/* Boutons */
-.greenBackground {
-    background-color: var(--greencolor);
-}
 
-.whiteText {
-    color: var(--whitebackground);
-}
-
+/*bg color*/
 .whiteBackground {
     background-color: var(--whitebackground);
 }
 
+.lightblueBackground {
+    background-color: var(--bluebgcolor);
+}
+
+ .blueBackground {
+    background-color: var(--bluecolor);
+}
+
+.greenBackground {
+    background-color: var(--greencolor);
+}
+
+/*Text color*/
+.whiteText {
+    color: var(--whitebackground);
+}
+
 .greenText {
     color: var(--greencolor);
+}
+
+.blueText {
+    color: var(--bluecolor);
+}
+
+.darkText {
+    color: var(--darkcolor);
+}
+
+.blackText {
+    color: var(--blackcolor);
 }
 
 .greenBorder {
@@ -89,7 +111,7 @@
     border-bottom: 2px solid var(--greencolor);
 }
 
-.hoverGreen {
+.hoverBtn {
     transition: all 0.3s;
     transform: scale(1.05);
 }
