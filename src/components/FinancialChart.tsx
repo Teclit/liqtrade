@@ -1,26 +1,36 @@
-import { Line } from "react-chartjs-2";
-import { Chart, LineElement, CategoryScale, LinearScale, PointElement } from "chart.js";
+"use client";
 
-Chart.register(LineElement, CategoryScale, LinearScale, PointElement);
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
-export default function FinancialChart() {
-    const data = {
-        labels: ["1", "5", "10", "15", "20", "25"],
-        datasets: [
-            {
-                label: "Performance",
-                data: [10, 20, 15, 30, 25, 40],
-                borderColor: "green",
-                fill: true,
-                backgroundColor: "rgba(0, 128, 0, 0.2)",
-            },
-        ],
-    };
+interface FinancialChartProps {
+    data: { name: string; value1: number; value2: number; value3: number }[];
+}
 
+export default function FinancialChart({ data }: FinancialChartProps) {
     return (
-        <div className="mt-6 bg-white p-6 shadow rounded-md">
-            <h3 className="font-semibold">Informations financières</h3>
-            <Line data={data} />
+        <div className="bg-white p-6 shadow rounded-md flex-2">
+            <ResponsiveContainer width="100%" height={250}>
+                <LineChart data={data}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Line type="monotone" dataKey="value1" stroke="#00C49F" strokeWidth={2} />
+                    <Line type="monotone" dataKey="value2" stroke="#0088FE" strokeWidth={2} />
+                    <Line type="monotone" dataKey="value3" stroke="#FF8042" strokeWidth={2} />
+                </LineChart>
+            </ResponsiveContainer>
+            <div className="flex justify-center gap-4 mt-4">
+                <span className="flex items-center gap-1">
+                    <span className="w-3 h-3 bg-green-400 rounded-full"></span> Lorem Ipsum
+                </span>
+                <span className="flex items-center gap-1">
+                    <span className="w-3 h-3 bg-blue-400 rounded-full"></span> Lorem Ipsum
+                </span>
+                <span className="flex items-center gap-1">
+                    <span className="w-3 h-3 bg-orange-400 rounded-full"></span> Lorem Ipsum
+                </span>
+            </div>
         </div>
     );
 }
