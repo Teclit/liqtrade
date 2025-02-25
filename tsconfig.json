@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "types": [
+      "@testing-library/jest-dom",
+      "jest"
+    ],
     "target": "ES2017",
     "lib": [
       "dom",
