@@ -21,14 +21,13 @@ export default function Transactions() {
         <div className="p-6 bg-gray-100 rounded-lg">
             <h2 className="text-xl font-bold">Transactions</h2>
 
-            {/* Transaction Tabs */}
             <TransactionTabs setActiveTabAction={setActiveTab} />
 
             {activeTab === "Actifs" && (
-                <div className="flex flex-col md:flex-row flex-wrap gap-6 mt-6">
+                <div className="flex flex-wrap gap-6 mt-6">
                     <TransactionCard />
-                    <ContractDetailsTable data={contractDetails}  />
-                    <LoanConditionsTable data={loanConditions}  />
+                    <ContractDetailsTable data={contractDetails} />
+                    <LoanConditionsTable data={loanConditions} />
                 </div>
             )}
         </div>

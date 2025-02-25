@@ -1,16 +1,16 @@
 "use client";
 
-import {FaCheckCircle, FaCheckSquare, FaClock} from "react-icons/fa";
-import React, {useEffect, useState} from "react";
-import {Cell, Pie, PieChart, Tooltip} from "recharts";
-import {LuDownload} from "react-icons/lu";
+import { FaCheckCircle, FaCheckSquare, FaClock } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { Cell, Pie, PieChart, Tooltip } from "recharts";
+import { LuDownload } from "react-icons/lu";
 import Image from "next/image";
 
 const data = [
-    {name: "Accord ouverture", value: 50, color: "#00C49F"},
-    {name: "Accord demande", value: 20, color: "#FF9900"},
-    {name: "Évaluation des risques", value: 40, color: "#0088FE"},
-    {name: "Évaluation des risques", value: 100, color: "#c1d4e4"},
+    { name: "Accord ouverture", value: 50, color: "#00C49F" },
+    { name: "Accord demande", value: 20, color: "#FF9900" },
+    { name: "Évaluation des risques", value: 40, color: "#0088FE" },
+    { name: "Évaluation des risques", value: 100, color: "#c1d4e4" },
 ];
 
 export default function TransactionCard() {
@@ -23,14 +23,14 @@ export default function TransactionCard() {
     if (!mounted) return null;
 
     return (
-        <div className="flex flex-1 min-w-[300px] text-xs flex-wrap gap-6 justify-center lg:justify-between">
-            <div
-                className="bg-white p-6 shadow rounded-md flex flex-col justify-between flex-1 min-w-[250px] max-w-[300px] h-full">
+        <div className="flex flex-wrap gap-6 justify-center lg:justify-between w-full">
+            {/* État du prêt */}
+            <div className="bg-white p-6 shadow rounded-md flex flex-col justify-between flex-1 min-w-[250px] max-w-[300px]">
                 <h3 className="font-semibold mb-4">État</h3>
                 <div className="flex justify-between items-center">
                     <p className="text-gray-700">Prêt Société</p>
                     <p className="text-green-500 font-semibold flex items-center gap-1">
-                        Validé <FaCheckCircle/>
+                        Validé <FaCheckCircle />
                     </p>
                 </div>
                 <div className="h-2 bg-gray-200 rounded-full mt-1">
@@ -40,7 +40,7 @@ export default function TransactionCard() {
                 <div className="flex justify-between items-center mt-4">
                     <p className="text-gray-700">Prêt HotDoggs</p>
                     <p className="text-blue-500 font-semibold flex items-center gap-1">
-                        En attente <FaClock/>
+                        En attente <FaClock />
                     </p>
                 </div>
                 <div className="h-2 bg-gray-200 rounded-full mt-1">
@@ -52,17 +52,17 @@ export default function TransactionCard() {
                 </a>
             </div>
 
-            <div
-                className="bg-white p-6 shadow rounded-md flex flex-col justify-between flex-1 text-center min-w-[250px] max-w-[300px] h-full">
+            {/* Montant du prêt */}
+            <div className="bg-white p-6 shadow rounded-md flex flex-col justify-between flex-1 text-center min-w-[250px] max-w-[300px]">
                 <h3 className="text-left font-semibold mb-2">Prêt Société</h3>
                 <p className="text-3xl font-bold text-gray-900">39 234€</p>
                 <p className="text-gray-500 text-sm">Montant du prêt en cours</p>
                 <p className="text-green-500 font-semibold flex justify-center items-center gap-1 mt-2">
-                    Prêt validé <FaCheckCircle/>
+                    Prêt validé <FaCheckCircle />
                 </p>
             </div>
 
-
+            {/* Évaluation des risques */}
             <div className="bg-white text-left text-xs p-6 shadow rounded-md flex-1 min-w-[280px] max-w-[320px]">
                 <div className="flex justify-between">
                     <h3 className="font-semibold">En attente</h3>
@@ -70,8 +70,7 @@ export default function TransactionCard() {
                 </div>
 
                 <div className="flex justify-between mt-4">
-                    <div className="">
-
+                    <div>
                         <PieChart width={80} height={80}>
                             <Pie
                                 data={data}
@@ -81,47 +80,39 @@ export default function TransactionCard() {
                                 fill="#8884d8"
                             >
                                 {data.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={entry.color}/>
+                                    <Cell key={`cell-${index}`} fill={entry.color} />
                                 ))}
                             </Pie>
-                            <Tooltip/>
+                            <Tooltip />
                         </PieChart>
-
                     </div>
 
-                    <div className="mt-4 space-y-1 ">
-                        <p className=" flex items-center gap-2">
-                            <FaCheckSquare className="text-green-500 "/> Accord ouverture
+                    <div className="mt-4 space-y-1">
+                        <p className="flex items-center gap-2">
+                            <FaCheckSquare className="text-green-500" /> Accord ouverture
                         </p>
-                        <p className=" flex items-center gap-2">
-                            <FaCheckSquare className="text-orange-500 "/> Accord demande
+                        <p className="flex items-center gap-2">
+                            <FaCheckSquare className="text-orange-500" /> Accord demande
                         </p>
-                        <p className=" flex items-center gap-2">
-                            <FaCheckSquare className="text-green-500 "/> Évaluation des risques
+                        <p className="flex items-center gap-2">
+                            <FaCheckSquare className="text-green-500" /> Évaluation des risques
                         </p>
                     </div>
-
                 </div>
-
 
                 <p className="text-gray-500 text-xs mt-4">
                     Pour déclencher la prochaine étape de validation, veuillez nous joindre:
                 </p>
                 <a href="#" className="flex items-center gap-2 text-gray-400 text-sm mt-2">
-                    <LuDownload className="text-gray-400"/> Dossier super important.pdf
+                    <LuDownload className="text-gray-400" /> Dossier super important.pdf
                 </a>
             </div>
 
+            {/* Clôture du prêt */}
             <div className="bg-white text-left p-5 shadow rounded-md flex-1 text-xs min-w-[250px] max-w-[300px]">
-                <h3 className="font-semibold">Cloturé</h3>
+                <h3 className="font-semibold">Clôturé</h3>
                 <div className="flex justify-center my-4">
-                    <Image
-                        src="/achievement.png"
-                        alt="User profile"
-                        width={50}
-                        height={30}
-                        priority
-                    />
+                    <Image src="/achievement.png" alt="User profile" width={50} height={30} priority />
                 </div>
 
                 <p className="text-gray-500 text-xs">Prêt Société</p>
@@ -131,5 +122,3 @@ export default function TransactionCard() {
         </div>
     );
 }
-
-

@@ -1,6 +1,6 @@
 export default function ContractDetailsTable({ data }: { data: typeof import("../../transactionData").contractDetails }) {
     return (
-        <div className="bg-white p-6 shadow rounded-md flex-1 w-full overflow-x-auto">
+        <div className="bg-white p-6 shadow rounded-md w-full overflow-x-auto">
             <table className="w-full min-w-[600px] border-collapse">
                 <thead>
                 <tr className="text-center text-xs sm:text-sm text-blue-900 font-semibold">
