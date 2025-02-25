@@ -14,23 +14,33 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Simulation de Connexion avec Stockage Local
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Ce projet inclut une fonctionnalité de simulation de connexion utilisateur en utilisant le stockage local du navigateur.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Fonctionnalité de Connexion
 
-## Learn More
+- Lorsqu'un utilisateur tente de se connecter, les informations saisies (email et mot de passe) sont comparées à celles enregistrées dans le stockage local.
+- **Cas 1 : Connexion réussie.**
+    - Si les informations correspondent, une session d'authentification est créée avec un **token** et une **expiration d'une heure**.
+    - L'utilisateur est redirigé vers le tableau de bord (`/user`).
 
-To learn more about Next.js, take a look at the following resources:
+- **Cas 2 : Échec de connexion.**
+    - Une alerte est affichée si les identifiants sont incorrects ou si aucun utilisateur enregistré ne correspond.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Utilisation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Accédez à la page de connexion via l'URL : `/auth/login`.
+2. Remplissez les champs email et mot de passe.
+3. Cliquez sur le bouton **Se connecter**.
 
-## Deploy on Vercel
+- Comportement attendu :
+    - Si les identifiants sont valides, vous serez redirigé vers le tableau de bord utilisateur (`/user`).
+    - Sinon, une alerte indiquera que les identifiants sont incorrects.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Comportement d'authentification
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Les données de session sont stockées dans le **stockage local** du navigateur comme suit :
+    - **Session d'authentification** : `{ token: "user-authenticated", expiresAt: [timestamp] }`.
+
+Vous pouvez vérifier ces informations dans l'**inspecteur du navigateur** sous l'onglet **Stockage local**.
