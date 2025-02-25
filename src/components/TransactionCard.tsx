@@ -23,7 +23,7 @@ export default function TransactionCard() {
     if (!mounted) return null;
 
     return (
-        <div className="flex text-xs flex-wrap gap-6 justify-center lg:justify-between">
+        <div className="flex flex-1 min-w-[300px] text-xs flex-wrap gap-6 justify-center lg:justify-between">
             <div
                 className="bg-white p-6 shadow rounded-md flex flex-col justify-between flex-1 min-w-[250px] max-w-[300px] h-full">
                 <h3 className="font-semibold mb-4">État</h3>
