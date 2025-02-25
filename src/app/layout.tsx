@@ -14,9 +14,6 @@ export const metadata: Metadata = {
 
 // Make the function `async` to await `cookies()`
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-   // const cookieStore = await cookies(); // ✅ Await the cookies() function
- //   const authToken = cookieStore.get("authToken")?.value || null; // ✅ Access cookies safely
-
     return (
         <html lang="fr">
         <body className={inter.className}>
