@@ -37,7 +37,7 @@ export default function FeatureGrid() {
             {features.map((feature, index) => (
                 <div
                     key={index}
-                    className="bg-white shadow-lg rounded-lg p-6 flex items-start space-x-4"
+                    className="bg-sky-50 shadow-lg rounded-lg p-6 flex items-start space-x-4"
                 >
                     <div className={`p-3 rounded-full ${feature.bgColor}`}>{feature.icon}</div>
                     <div>

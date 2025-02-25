@@ -18,7 +18,7 @@ export default function Transactions() {
     if (!mounted) return <p className="text-center text-gray-500">Loading transactions...</p>;
 
     return (
-        <div className="p-6 bg-gray-100 rounded-lg">
+        <div className="p-6 rounded-lg">
             <h2 className="text-xl font-bold">Transactions</h2>
 
             <TransactionTabs setActiveTabAction={setActiveTab} />

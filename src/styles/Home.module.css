@@ -1,13 +1,5 @@
 /* === Variables globales pour les couleurs === */
 
-
-/* === Styles généraux === */
-.HomePage {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
 /* Conteneur principal */
 .container {
     background-color: var(--whitebackground);

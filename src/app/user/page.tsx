@@ -13,7 +13,7 @@ export default function UserDashboard() {
     const {logout} = useContext(AuthContext);
     return (
         <ProtectedRoute>
-            <div className="flex flex-col lg:flex-row h-auto bg-gray-100">
+            <div className="flex bg-slate-200 flex-col lg:flex-row h-auto">
 
                     <Sidebar logoutAction={logout} />
 

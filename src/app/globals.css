@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+    --background: #F1F0E9;
     --whitebackground: #ffffff;
     --foreground: #F7F8FB;
     --greencolor: #2ECF81;
@@ -16,16 +17,9 @@
 
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #ededed;
-        --darkcolor: #292929;
-    }
-}
-
 body {
     color: var(--darkcolor);
-    background: var(--background);
+    background: var(--whitebackground);
     font-family: 'Lato', sans-serif;
     line-height: 1.6;
     overflow-y: visible;

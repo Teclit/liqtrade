@@ -11,7 +11,7 @@ const SectionDescription: React.FC<SectionDescriptionProps> = ({
                                                                }) => {
     return (
         <div
-            className="sectionDescription flex flex-col lg:flex-row justify-between mx-0 mt-32 py-14 px-6 lg:px-36 bg-gray-100">
+            className="flex flex-col lg:flex-row justify-between mt-44 py-14 px-6 lg:px-36 bg-gray-200 ">
             <ul className="flex flex-col space-y-4 text-lg font-semibold ml-0 lg:ml-36">
                 <li>
                     <button
