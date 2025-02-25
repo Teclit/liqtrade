@@ -1,9 +1,9 @@
 import "./globals.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { cookies } from "next/headers"; // Fetch localStorage equivalent on server
+import type {Metadata} from "next";
+import {Inter} from "next/font/google";
+import {cookies} from "next/headers"; // Fetch localStorage equivalent on server
 import AuthProvider from "@/context/AuthProvider";
-import { Navbar } from "@/components/navbar";
+import React from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +14,8 @@ export const metadata: Metadata = {
 
 // Make the function `async` to await `cookies()`
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-    const cookieStore = await cookies(); // ✅ Await the cookies() function
-    const authToken = cookieStore.get("authToken")?.value || null; // ✅ Access cookies safely
-    const isAuthenticated = !!authToken; // ✅ Check if token exists
+   // const cookieStore = await cookies(); // ✅ Await the cookies() function
+ //   const authToken = cookieStore.get("authToken")?.value || null; // ✅ Access cookies safely
 
     return (
         <html lang="fr">
