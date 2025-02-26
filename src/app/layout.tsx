@@ -12,7 +12,6 @@ export const metadata: Metadata = {
     description: "Professional financial services platform",
 };
 
-// Make the function `async` to await `cookies()`
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="fr">

@@ -1,12 +1,13 @@
 "use client";
-import {Button} from "@/components/ui/button";
-import {usePathname} from "next/navigation";
+
+import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
-import {Navbar} from "@/components/navbar";
+import { Navbar } from "@/components/navbar";
 
 export default function AffacturagePage() {
-    const pathname = usePathname();
-    const pageTitle = pathname.split("/").pop();
+    const pathname = usePathname() || "";
+    const pageTitle = pathname?.split("/").pop() || "Page";
 
     return (
         <>
