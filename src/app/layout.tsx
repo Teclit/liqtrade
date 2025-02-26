@@ -1,7 +1,6 @@
 import "./globals.css";
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
-import {cookies} from "next/headers"; // Fetch localStorage equivalent on server
 import AuthProvider from "@/context/AuthProvider";
 import React from "react";
 
