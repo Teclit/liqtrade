@@ -1,4 +1,4 @@
-/** @type {import('next').NextConfig} */
+/** @type {{experimental: {turbo: boolean}}} */
 const nextConfig = {
     experimental: {
         turbo: false, // Disable Turbopack
