@@ -1,20 +1,19 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
+import {useState} from "react";
 
 export default function RegisterPage() {
-    const [formData, setFormData] = useState({ username: "", email: "", password: "" });
+    const [formData, setFormData] = useState({username: "", email: "", password: ""});
 
-    const handleChange = (e: { target: { name: any; value: any; }; }) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+    const handleChange = (e: { target: { name: string; value: string; }; }) => {
+        const {name, value} = e.target;
+        setFormData({...formData, [name]: value});
     };
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        // Handle form submission logic here
         console.log("Register form submitted", formData);
     };
 
@@ -23,8 +22,9 @@ export default function RegisterPage() {
             <h2 className="text-2xl font-bold mb-6 text-center text-gray-700">S'inscrire</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
-                    <label className="block text-gray-700">Username</label>
+                    <label htmlFor="username" className="block text-gray-700">Username</label>
                     <input
+                        id="username"
                         type="text"
                         name="username"
                         value={formData.username}
@@ -34,8 +34,9 @@ export default function RegisterPage() {
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-gray-700">Email</label>
+                    <label htmlFor="email" className="block text-gray-700">Email</label>
                     <input
+                        id="email"
                         type="email"
                         name="email"
                         value={formData.email}
@@ -45,8 +46,9 @@ export default function RegisterPage() {
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-gray-700">Password</label>
+                    <label htmlFor="password" className="block text-gray-700">Password</label>
                     <input
+                        id="password"
                         type="password"
                         name="password"
                         value={formData.password}
@@ -60,7 +62,7 @@ export default function RegisterPage() {
                 </Button>
             </form>
             <p className="mt-4 text-center text-gray-600">
-                Vous avez déjà un compte ?  <Link href="/auth/login" className="text-blue-500">Se Connecter</Link>
+                Vous avez déjà un compte ? <Link href="/auth/login" className="text-blue-500">Se Connecter</Link>
             </p>
         </div>
     );

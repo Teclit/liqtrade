@@ -45,8 +45,9 @@ export default function LoginPage() {
             <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">Se Connecter</h2>
             <form onSubmit={(e) => e.preventDefault()}>
                 <div className="mb-4">
-                    <label className="block text-gray-700">Email</label>
+                    <label htmlFor="email" className="block text-gray-700">Email</label>
                     <input
+                        id="email"
                         type="email"
                         className="w-full px-3 py-2  border rounded-lg"
                         required
@@ -55,8 +56,9 @@ export default function LoginPage() {
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-gray-700">Mot de passe</label>
+                    <label htmlFor="password" className="block text-gray-700">Mot de passe</label>
                     <input
+                        id="password"
                         type="password"
                         className="w-full px-3 py-2 border rounded-lg"
                         required
